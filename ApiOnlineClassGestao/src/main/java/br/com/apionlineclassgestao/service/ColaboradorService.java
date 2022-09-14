@@ -22,7 +22,8 @@ public class ColaboradorService {
 		
 		String senhaPadrao = "colaborador";
 		
-		DadosPessoais dadosPessoaisSalvo = this.dadosPessoaisService.buscarDadosPessoaisPorId(dadosPessoais.getId());
+		
+		DadosPessoais dadosPessoaisSalvo = dadosPessoaisService.salvarDadosPessoais(dadosPessoais);
 		if(dadosPessoaisSalvo == null) {
 			return null; //Criar mensagem de erro
 		}

@@ -15,33 +15,37 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="colaborador", schema = "public")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Colaborador implements Serializable {
 
 	@Serial
     private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 	
-	@NonNull
 	@OneToOne
 	@JoinColumn(name = "id_dados_pessoais", referencedColumnName = "id")
 	private DadosPessoais dadosPessoais;
 	
-	@NonNull
+
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "data_cadastro")
 	private LocalDateTime dataCadastro;
 	
-	@NonNull
+
 	@Column
 	private String senha;
 	
