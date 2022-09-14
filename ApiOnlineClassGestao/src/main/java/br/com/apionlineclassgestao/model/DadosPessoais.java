@@ -2,6 +2,7 @@ package br.com.apionlineclassgestao.model;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,10 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import javax.validation.constraints.Past;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,16 +41,16 @@ public class DadosPessoais implements Serializable {
     @Column
     private String cpf;
     
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @Past(message = "Data de aniversário não pode ser posterior a data atual!")
     @Column(name="data_nascimento")
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
     
-	public void setDataNascimento(String dataNascimento) throws Exception {	
-		if(LocalDate.now().isBefore(LocalDate.parse(dataNascimento, DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
-			throw new Exception("Data de Nascimento não pode ser posterior a data atual"); 
-		}
-		this.dataNascimento = LocalDate.parse(dataNascimento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));	
+	public void setDataNascimento(String dataNascimento) {	
+		this.dataNascimento =Date.valueOf(LocalDate.parse(dataNascimento, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+	}
+	
+	public String getDataNascimento() {
+		return this.dataNascimento.toString();
 	}
 	
 }

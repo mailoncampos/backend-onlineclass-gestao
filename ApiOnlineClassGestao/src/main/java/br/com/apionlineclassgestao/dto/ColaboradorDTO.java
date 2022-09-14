@@ -17,7 +17,9 @@ public class ColaboradorDTO {
     
     private String cpf;
     
-    @JsonFormat(pattern = "dd-MM-yyyy")
     private String dataNascimento;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private String dataCadastro;
 	
 }

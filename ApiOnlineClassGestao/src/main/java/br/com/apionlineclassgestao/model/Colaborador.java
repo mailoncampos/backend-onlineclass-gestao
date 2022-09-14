@@ -41,7 +41,7 @@ public class Colaborador implements Serializable {
 	private DadosPessoais dadosPessoais;
 	
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "dd/MM/yyy HH:mm:ss")
 	@Column(name = "data_cadastro")
 	private LocalDateTime dataCadastro;
 	

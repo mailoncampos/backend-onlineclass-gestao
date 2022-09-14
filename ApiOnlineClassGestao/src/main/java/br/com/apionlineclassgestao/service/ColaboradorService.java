@@ -21,8 +21,7 @@ public class ColaboradorService {
 	public Colaborador salvarColaborador(Colaborador colaborador, DadosPessoais dadosPessoais) {
 		
 		String senhaPadrao = "colaborador";
-		
-		
+
 		DadosPessoais dadosPessoaisSalvo = dadosPessoaisService.salvarDadosPessoais(dadosPessoais);
 		if(dadosPessoaisSalvo == null) {
 			return null; //Criar mensagem de erro
@@ -32,5 +31,9 @@ public class ColaboradorService {
 		colaborador.setSenha(senhaPadrao);
 		colaborador.setDadosPessoais(dadosPessoaisSalvo);
 		return colaboradorRepository.save(colaborador);
+	}
+	
+	public Colaborador buscarColaboradorPorId(Long id) {
+		return colaboradorRepository.findById(id).get();
 	}
 }
