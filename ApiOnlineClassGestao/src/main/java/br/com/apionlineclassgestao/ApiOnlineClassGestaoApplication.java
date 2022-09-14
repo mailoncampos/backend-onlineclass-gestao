@@ -1,13 +1,13 @@
-package br.com.onlineservice.ApiOnlineClassGestao;
+package br.com.apionlineclassgestao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiOnlineSalaDeAulaGestaoApplication {
+public class ApiOnlineClassGestaoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiOnlineSalaDeAulaGestaoApplication.class, args);
+		SpringApplication.run(ApiOnlineClassGestaoApplication.class, args);
 	}
 
 }
